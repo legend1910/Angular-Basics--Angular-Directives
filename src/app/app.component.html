@@ -15,7 +15,9 @@
   7.we are binding to a property of the directive and its not propety binding by [ngStyle]
   8. We define key-Value pair where we mention property and value
   9. Similar like ngStyle we can change the class using [ngClass]
-  10. The only catch is in ngClass we have class name first and next value determines we have to attach a class or not
+  10. The only catch is in ngClass we have class name first and next value determines we have to attach a class or not.
+  11.ngFor is a structural directive which changes the structure by adding new element
+  12. it starts with * and with a temp variable using let
 </p>
 
 <h4>1.Using ngIf and else</h4>
@@ -33,7 +35,7 @@
 </ng-template>
 <p *ngIf="name!='' else NoName">the name you have entered is {{name}}</p>
 
-<h4>2.Using ngStyle</h4>
+<h4>2.Using ngStyle and ngClass</h4>
 
 <input [(ngModel)]="value">
 <br>
@@ -45,3 +47,11 @@
 <p [ngStyle]="{backgroundColor:getColor()}">no name enterd</p>
 <!-- Simalar like ngStyle here the key is the class name Error which is defined in the AppComponent.ts and the value is a boolean which determines wheter to add the Class or not . The Value can be determined by a JS function returning a boolean value or inline expression returing boolean-->
 <p [ngStyle]="{backgroundColor:getColor()}"[ngClass]="{Error:value===''}">no name enterd</p>
+
+<h4>2.Using ngFor</h4>
+
+<input [(ngModel)]= "EmployeeName">
+<br>
+<br>
+<button class="btn btn-primary" (click)="OnEmployeeAdd()">Create</button>
+<p *ngFor="let employee of EmployeeList"> number</p>

@@ -13,6 +13,8 @@ export class AppComponent {
   name = '';
   isNameAdded = false;
   value='';
+  EmployeeName='';
+  EmployeeList=['Smith','Jack'];
   OnAddEvent() {
     this.isNameAdded = true;
     console.log(this.name);
@@ -27,5 +29,11 @@ return 'red';
     {
 return 'Green';
     }
+  }
+  OnEmployeeAdd()
+  {
+    this.EmployeeList.push(this.EmployeeName);
+    this.EmployeeName='';
+    console.log(this.EmployeeList);
   }
 }
