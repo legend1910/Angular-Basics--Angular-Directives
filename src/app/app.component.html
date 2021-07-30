@@ -1,24 +1,47 @@
 <p>
-  1.Directives are instruction in the DOM. Ex : The components are such kind of directives for example : you are creating a compnonent with a selector and you are using it in the template you instructing Angular to add the content of the templated and the business logic in the typeScript  in the place where we use the selector.
+  1.Directives are instruction in the DOM. Ex : The components are such kind of directives for example : you are
+  creating a compnonent with a selector and you are using it in the template you instructing Angular to add the content
+  of the templated and the business logic in the typeScript in the place where we use the selector.
   <br>
   2. Directives can be with or without template(Components are one kind of example for directive with template)
   <br>
   3. Predefined directives like ngif
   <br>
-  4. * ng if is  a structure  directive where it changes the DOM i.e it adds a html element or it doesn't 
+  4. * ng if is  a structure  directive where it changes the DOM i.e it adds a html element or it doesn't
   <br>
   5. * is required without it it doesn't work
-  </p>
+  <br>
+  6. We Have Attribute Directives which are used to change the element but not adding or removing an element and it is without * example: ngStyle
+  7.we are binding to a property of the directive and its not propety binding by [ngStyle]
+  8. We define key-Value pair where we mention property and value
+  9. Similar like ngStyle we can change the class using [ngClass]
+  10. The only catch is in ngClass we have class name first and next value determines we have to attach a class or not
+</p>
 
-  <h4>1.Using ngIf and else</h4>
-  <input [(ngModel)]="name">
-  <button class="btn btn-primary" (click)="OnAddEvent()">Add</button>
-  <!-- It Similar like Event Binding where within "" i.e *ngif="", you need have an expression or function call or a variable which returns boolean value-->
-  <p *ngIf="isNameAdded">you have entered {{name}}</p>
-  <p *ngIf="name!=''">you have a entered {{name}}</p>
+<h4>1.Using ngIf and else</h4>
+<input [(ngModel)]="name">
+<button class="btn btn-primary" (click)="OnAddEvent()">Add</button>
+<!-- It Similar like Event Binding where within "" i.e *ngif="", you need have an expression or function call or a variable which returns boolean value-->
+<p *ngIf="isNameAdded">you have entered {{name}}</p>
+<p *ngIf="name!=''">you have a entered {{name}}</p>
 
-  <!---using local refrence  for ngif else
+<!---using local refrence  for ngif else
   we need use ng-template here  and #NoName is a local refrence 
   -->
-  <ng-template #NoName> <p>No Name Entered</p></ng-template>
-  <p *ngIf="name!='' else NoName">the name you have entered is {{name}}</p>
+<ng-template #NoName>
+  <p>No Name Entered</p>
+</ng-template>
+<p *ngIf="name!='' else NoName">the name you have entered is {{name}}</p>
+
+<h4>2.Using ngStyle</h4>
+
+<input [(ngModel)]="value">
+<br>
+<!---
+    {backgroundColor:getColor()} key value pair
+  -->
+<p *ngIf="value!='' else noValue" [ngStyle]="{backgroundColor:getColor()}">you have a entered {{value}}</p>
+<ng-template #noValue>enter a value</ng-template>
+<p [ngStyle]="{backgroundColor:getColor()}">no name enterd</p>
+<!-- Simalar like ngStyle here the key is the class name Error which is defined in the AppComponent.ts and the value is a boolean which determines wheter to add the Class or not . The Value can be determined by a JS function returning a boolean value or inline expression returing boolean-->
+<p [ngStyle]="{backgroundColor:getColor()}"[ngClass]="{Error:value===''}">no name enterd</p>
